@@ -24,10 +24,7 @@ class program
           myarray[i] = input;
       }
       
-      for (int i = 0; i<cells_count; i++)
-      {
-          Console.WriteLine($"Element myarray [{i}] = {myarray[i]}");
-      }
+      ArrayOut(cells_count, myarray);
       
       cell_count = 0;
       
@@ -63,6 +60,14 @@ class program
       for (int i = 0; i<cell_count; i++)
       {
           Console.WriteLine($"Element task array [{i}] = {taskarray[i]}");
+      }
+  }
+
+  static void ArrayOut(int cells_count, string[] myarray)
+  {
+   for (int i = 0; i<cells_count; i++)
+      {
+          Console.WriteLine($"Element myarray [{i}] = {myarray[i]}");
       }
   }
 }
