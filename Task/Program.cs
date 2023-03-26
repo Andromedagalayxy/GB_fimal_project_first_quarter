@@ -1,12 +1,10 @@
-﻿using System;
-
-class program 
+﻿class program 
 {
   static void Main(string [] args) 
   {
       Console.WriteLine("How many array cells do you want to create?");
       
-      int cells_count, cell_lenght, cell_count, count, k;
+      int taskarray_lenght, taskarray_element_lenght;
       
       string [] taskarray;
       string [] inarray;
@@ -15,36 +13,13 @@ class program
       
       ArrayOut(inarray);
       
-      cell_count = 0;
+      taskarray_lenght = TaskArrayLenght(inarray);
       
-      for (int i = 0; i<inarray.Length; i++)
-      {
-          cell_lenght = inarray[i].Length;
-          if (cell_lenght < 4) 
-          {
-              cell_count++;
-          }
-      } 
-      
-      taskarray = new string [cell_count];
-      count = 0;
-      k = 0;
-      
-      for (int i = 0; i<inarray.Length; i++)
-      {
-          if (count < cell_count)
-          {
-              cell_lenght = inarray[i].Length;
-              
-              if (cell_lenght < 4) 
-              {
-                  taskarray[k] = inarray[i];
-                  count++;
-                  k++;
-              }
-          }
-          else if (count == cell_count) break;
-      }
+      taskarray = new string [taskarray_lenght];
+
+      taskarray_element_lenght = 0;
+
+      taskarray = TaskArraySort(inarray,taskarray,taskarray_lenght,taskarray_element_lenght);
       
       ArrayOut2(taskarray);
   }
@@ -87,8 +62,41 @@ class program
       }
   }
 
-  static int NewArrayLenght () 
+  static int TaskArrayLenght (string [] inarray) 
   {
+    int cell_lenght = 0;
+    int cell_count = 0;
+    for (int i = 0; i<inarray.Length; i++)
+      {
+          cell_lenght = inarray[i].Length;
+          if (cell_lenght < 4) 
+          {
+              cell_count++;
+          }
+      } 
+      return cell_count;
+  }
+  static string [] TaskArraySort(string [] inarray, string [] taskarray, int taskarray_lenght, int taskarray_element_lenght)
+  {
+    int count, k;
+    k = 0;
+    count = 0;
     
+    for (int i = 0; i<inarray.Length; i++)
+      {
+          if (count < taskarray_lenght)
+          {
+              taskarray_element_lenght = inarray[i].Length;
+              
+              if (taskarray_element_lenght < 4) 
+              {
+                  taskarray[k] = inarray[i];
+                  count++;
+                  k++;
+              }
+          }
+          else if (count == taskarray_lenght) break;
+      }
+      return taskarray;
   }
 }
