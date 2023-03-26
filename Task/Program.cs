@@ -53,42 +53,42 @@ static string [] Input()
 
   static int LenghtForNextArray (string [] tea) 
   {
-    int cell_lenght = 0;
-    int cell_count = 0;
+    int l = 0; //lenght
+    int c = 0; //count
 
     for (int i = 0; i<tea.Length; i++)
       {
-          cell_lenght = tea[i].Length;
-          if (cell_lenght < 4) 
+          l = tea[i].Length;
+          if (l < 4) 
           {
-              cell_count++;
+              c++;
           }
       } 
       
-      return cell_count;
+      return c;
   }
 
 static string [] ArrayConversion (string [] tea, string [] tda, int tl, int tel)
   {
-    int count, k;
+    int c, k;
 
     k = 0;
-    count = 0;
+    c = 0; //count 
     
     for (int i = 0; i<tea.Length; i++)
       {
-          if (count < tl)
+          if (c < tl)
           {
               tel = tea[i].Length;
               
               if (tel < 4) 
               {
                   tda[k] = tea[i];
-                  count++;
+                  c++;
                   k++;
               }
           }
-          else if (count == tl) break;
+          else if (c == tl) break;
       }
 
       return tda;
