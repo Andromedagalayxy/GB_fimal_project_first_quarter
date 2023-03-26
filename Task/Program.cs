@@ -7,7 +7,7 @@ class program
       Console.WriteLine("How many array cells do you want to create?");
       
       string input;
-      int cells_count, cell_lenght, cell_count, count;
+      int cells_count, cell_lenght, cell_count, count, k;
       string [] myarray;
       string [] taskarray;
       
@@ -42,6 +42,7 @@ class program
       
       taskarray = new string [cell_count];
       count = 0;
+      k = 0;
       
       for (int i = 0; i<cells_count; i++)
       {
@@ -51,11 +52,12 @@ class program
               
               if (cell_lenght < 4) 
               {
-                  taskarray[i] = myarray[i];
+                  taskarray[k] = myarray[i];
                   count++;
+                  k++;
               }
           }
-          
+          else if (count == cell_count) break;
       }
       
       for (int i = 0; i<cell_count; i++)
