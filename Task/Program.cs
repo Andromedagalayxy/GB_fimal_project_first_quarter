@@ -6,31 +6,20 @@ class program
   {
       Console.WriteLine("How many array cells do you want to create?");
       
-      string input;
       int cells_count, cell_lenght, cell_count, count, k;
-      string [] myarray;
+      
       string [] taskarray;
+      string [] inarray;
+
+      inarray = ArrayIn();
       
-      input = Console.ReadLine();
-      cells_count = Convert.ToInt32(input);
-      
-      myarray = new string [cells_count];
-      
-      
-      for (int i = 0; i<cells_count; i++)
-      {
-          Console.WriteLine("Enter cell name");
-          input = Console.ReadLine();
-          myarray[i] = input;
-      }
-      
-      ArrayOut(cells_count, myarray);
+      ArrayOut(inarray);
       
       cell_count = 0;
       
-      for (int i = 0; i<cells_count; i++)
+      for (int i = 0; i<inarray.Length; i++)
       {
-          cell_lenght = myarray[i].Length;
+          cell_lenght = inarray[i].Length;
           if (cell_lenght < 4) 
           {
               cell_count++;
@@ -41,15 +30,15 @@ class program
       count = 0;
       k = 0;
       
-      for (int i = 0; i<cells_count; i++)
+      for (int i = 0; i<inarray.Length; i++)
       {
           if (count < cell_count)
           {
-              cell_lenght = myarray[i].Length;
+              cell_lenght = inarray[i].Length;
               
               if (cell_lenght < 4) 
               {
-                  taskarray[k] = myarray[i];
+                  taskarray[k] = inarray[i];
                   count++;
                   k++;
               }
@@ -57,17 +46,49 @@ class program
           else if (count == cell_count) break;
       }
       
-      for (int i = 0; i<cell_count; i++)
+      ArrayOut2(taskarray);
+  }
+
+  static void ArrayOut(string[] inarray)
+  {
+   for (int i = 0; i<inarray.Length; i++)
+      {
+          Console.WriteLine($"Element myarray [{i}] = {inarray[i]}");
+      }
+  }
+
+  static string [] ArrayIn()
+  {
+    int cells_count;
+    cells_count = 0;
+    string input;
+    string [] arrayin;
+
+    input = Console.ReadLine();
+
+    cells_count = Convert.ToInt32(input);
+
+    arrayin = new string [cells_count];
+
+    for (int i = 0; i<cells_count; i++)
+      {
+          Console.WriteLine("Enter cell name");
+          input = Console.ReadLine();
+          arrayin[i] = input;
+      }
+      return arrayin;
+  }
+
+  static void ArrayOut2(string [] taskarray)
+  {
+     for (int i = 0; i<taskarray.Length; i++)
       {
           Console.WriteLine($"Element task array [{i}] = {taskarray[i]}");
       }
   }
 
-  static void ArrayOut(int cells_count, string[] myarray)
+  static int NewArrayLenght () 
   {
-   for (int i = 0; i<cells_count; i++)
-      {
-          Console.WriteLine($"Element myarray [{i}] = {myarray[i]}");
-      }
+    
   }
 }
