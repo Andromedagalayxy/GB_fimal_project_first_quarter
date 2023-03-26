@@ -2,64 +2,63 @@
 {
   static void Main(string [] args) 
   {
-      int taskarray_lenght, taskarray_element_lenght;
-      string [] taskarray;
-      string [] inarray;
+      int tl, tel; //taskarray_lenght, taskarray_element_lenght
+      string [] tda, tea; //the desired array (taskarray), the entered array (arrayin)
 
-      taskarray_element_lenght = 0;
+      tel = 0;
 
       Console.WriteLine("How many array cells do you want to create?");
       
-      inarray = ArrayIn();
+      tea = Input();
       
-      ArrayOut(inarray);
+      Output(tea);
       
-      taskarray_lenght = TaskArrayLenght(inarray);
+      tl = LenghtForNextArray(tea);
       
-      taskarray = new string [taskarray_lenght];
+      tda = new string [tl];
 
-      taskarray = TaskArraySort(inarray,taskarray,taskarray_lenght,taskarray_element_lenght);
+      tda = ArrayConversion(tea,tda,tl,tel);
       
-      ArrayOut2(taskarray);
+      OutoutOfTheDesiredArray(tda);
   }
 
-static string [] ArrayIn()
+static string [] Input()
   {
-    int cells_count;
-    string input;
-    string [] arrayin;
+    int cc; //cells_count
+    string e; //enter (input)
+    string [] wa; //working array
 
-    cells_count = 0;
+    cc = 0;
     
-    input = Console.ReadLine();
-    cells_count = Convert.ToInt32(input);
-    arrayin = new string [cells_count];
+    e = Console.ReadLine();
+    cc = Convert.ToInt32(e);
+    wa = new string [cc];
 
-    for (int i = 0; i<cells_count; i++)
+    for (int i = 0; i<cc; i++)
       {
           Console.WriteLine($"Enter cell [{i}] ");
-          input = Console.ReadLine();
-          arrayin[i] = input;
+          e = Console.ReadLine();
+          wa[i] = e;
       }
-      return arrayin;
+      return wa;
   }
 
-  static void ArrayOut(string[] inarray)
+  static void Output(string[] tea)
   {
-   for (int i = 0; i<inarray.Length; i++)
+   for (int i = 0; i<tea.Length; i++)
       {
-          Console.WriteLine($"Element myarray [{i}] = {inarray[i]}");
+          Console.WriteLine($"An element in the entered array [{i}] = {tea[i]}");
       }
   }
 
-  static int TaskArrayLenght (string [] inarray) 
+  static int LenghtForNextArray (string [] tea) 
   {
     int cell_lenght = 0;
     int cell_count = 0;
 
-    for (int i = 0; i<inarray.Length; i++)
+    for (int i = 0; i<tea.Length; i++)
       {
-          cell_lenght = inarray[i].Length;
+          cell_lenght = tea[i].Length;
           if (cell_lenght < 4) 
           {
               cell_count++;
@@ -69,37 +68,37 @@ static string [] ArrayIn()
       return cell_count;
   }
 
-static string [] TaskArraySort(string [] inarray, string [] taskarray, int taskarray_lenght, int taskarray_element_lenght)
+static string [] ArrayConversion (string [] tea, string [] tda, int tl, int tel)
   {
     int count, k;
 
     k = 0;
     count = 0;
     
-    for (int i = 0; i<inarray.Length; i++)
+    for (int i = 0; i<tea.Length; i++)
       {
-          if (count < taskarray_lenght)
+          if (count < tl)
           {
-              taskarray_element_lenght = inarray[i].Length;
+              tel = tea[i].Length;
               
-              if (taskarray_element_lenght < 4) 
+              if (tel < 4) 
               {
-                  taskarray[k] = inarray[i];
+                  tda[k] = tea[i];
                   count++;
                   k++;
               }
           }
-          else if (count == taskarray_lenght) break;
+          else if (count == tl) break;
       }
 
-      return taskarray;
+      return tda;
   }
 
-  static void ArrayOut2(string [] taskarray)
+  static void OutoutOfTheDesiredArray(string [] tda)
   {
-     for (int i = 0; i<taskarray.Length; i++)
+     for (int i = 0; i<tda.Length; i++)
       {
-          Console.WriteLine($"Element task array [{i}] = {taskarray[i]}");
+          Console.WriteLine($"Element task array [{i}] = {tda[i]}");
       }
   }
 }
